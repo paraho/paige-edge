@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "apiservice",
+      "type": "com.paige.service.apigateway.application.ApiServiceConfig",
+      "sourceType": "com.paige.service.apigateway.application.ApiServiceConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "apiservice.home",
+      "type": "com.paige.service.apigateway.application.apiconfig.ApiServiceInfo",
+      "sourceType": "com.paige.service.apigateway.application.ApiServiceConfig"
+    },
+    {
+      "name": "apiservice.match",
+      "type": "com.paige.service.apigateway.application.apiconfig.ApiServiceInfo",
+      "sourceType": "com.paige.service.apigateway.application.ApiServiceConfig"
+    },
+    {
+      "name": "apiservice.news",
+      "type": "com.paige.service.apigateway.application.apiconfig.ApiServiceInfo",
+      "sourceType": "com.paige.service.apigateway.application.ApiServiceConfig"
+    },
+    {
+      "name": "apiservice.rank",
+      "type": "com.paige.service.apigateway.application.apiconfig.ApiServiceInfo",
+      "sourceType": "com.paige.service.apigateway.application.ApiServiceConfig"
+    }
+  ],
+  "hints": []
+}

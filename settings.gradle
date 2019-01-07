@@ -1,0 +1,3 @@
+rootProject.name = 'paige-edge'
+
+include 'edge-api', 'edge-service', 'edge-common'
