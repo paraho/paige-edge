@@ -37,26 +37,27 @@ public class ApiRouter {
     public static RouterFunction<?> bindToHomeHandler(HomeHandler homeHandler) {
 
         return RouterFunctions
-                .route(GET(API_PATH + apiServiceConfig.getHome().getGet().get(0).getUri()).and(accept(APPLICATION_JSON)), homeHandler::getContent)
+                .route(GET(API_PATH + apiServiceConfig.getHome().getPath()).and(accept(APPLICATION_JSON)), homeHandler::getContent)
                 .andRoute(POST("/api/post/**").and(accept(APPLICATION_JSON)), homeHandler::getContent)
                 .andRoute(PUT("/api/put/**").and(accept(APPLICATION_JSON)), homeHandler::getContent)
                 .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), homeHandler::getContent);
     }
 
-    public static RouterFunction<?> bindToNewsHandler(NewsHandler newsHandler) {
+    public static RouterFunction<?> bindToNewsHandler(NewsHandler newsHandler, MatchHandler matchHandler) {
 
         return RouterFunctions
-                .route(GET("/api/news/**"), newsHandler::getContent)
+                .route(GET(API_PATH + apiServiceConfig.getNews().getPath()), newsHandler::getContent)
                 .andRoute(POST("/api/post/**").and(accept(APPLICATION_JSON)), newsHandler::getContent)
                 .andRoute(PUT("/api/put/**").and(accept(APPLICATION_JSON)), newsHandler::getContent)
-                .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), newsHandler::getContent);
+                .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), newsHandler::getContent)
+                .andOther(bindToMatchHandler(matchHandler));
     }
 
-    /*
+
     public static RouterFunction<?> bindToMatchHandler(MatchHandler matchHandler) {
 
         return RouterFunctions
-                .route(GET(API_PATH + apiServiceConfig.getMatch().getGet().get(0).getUri()).and(accept(APPLICATION_JSON)), matchHandler::getContent)
+                .route(GET(API_PATH + apiServiceConfig.getMatch().getPath()).and(accept(APPLICATION_JSON)), matchHandler::getContent)
                 .andRoute(POST("/api/post/**").and(accept(APPLICATION_JSON)), matchHandler::getContent)
                 .andRoute(PUT("/api/put/**").and(accept(APPLICATION_JSON)), matchHandler::getContent)
                 .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), matchHandler::getContent);
@@ -65,11 +66,22 @@ public class ApiRouter {
     public static RouterFunction<?> bindToRankingHandler(RankingHandler rankingHandler) {
 
         return RouterFunctions
-                .route(GET(API_PATH + apiServiceConfig.getRank().getGet().get(0).getUri()).and(accept(APPLICATION_JSON)), rankingHandler::getContent)
+                .route(GET(API_PATH + apiServiceConfig.getRank().getPath()).and(accept(APPLICATION_JSON)), rankingHandler::getContent)
                 .andRoute(POST("/api/post/**").and(accept(APPLICATION_JSON)), rankingHandler::getContent)
                 .andRoute(PUT("/api/put/**").and(accept(APPLICATION_JSON)), rankingHandler::getContent)
                 .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), rankingHandler::getContent);
     }
-    */
+
+
+    public static RouterFunction<?> bindToHandler(HomeHandler homeHandler
+                                                , MatchHandler matchHandler
+                                                , NewsHandler newsHandler) {
+
+        return RouterFunctions
+                .route(GET(API_PATH + apiServiceConfig.getNews().getPath()).and(accept(APPLICATION_JSON)), newsHandler::getContent)
+                .andOther(bindToMatchHandler(matchHandler))
+                .andOther(bindToHomeHandler(homeHandler))
+                .andOther(bindToMatchHandler(matchHandler));
+    }
 
 }

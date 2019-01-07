@@ -9,10 +9,7 @@ import java.util.List;
 public class ApiServiceInfo implements Serializable {
 
     private String baseurl;
-    List<CommonProperty> get;
-    List<CommonProperty> post;
-    List<CommonProperty> put;
-    List<CommonProperty> del;
+    private String path;
 
 }
 

@@ -59,11 +59,10 @@ public class ApplicationConfig {
                                         , final ErrorHandler errorHandler
                                         , final HomeHandler homeHandler
                                         , final NewsHandler newsHandler
-                                        , final MatchHandler matchHandler
-                                        , final RankingHandler rankingHandler) {
+                                        , final MatchHandler matchHandler) {
 
         MainRouter.initialize(apiServiceConfig, errorHandler);
-        return MainRouter.bindToRouter(homeHandler, newsHandler, matchHandler, rankingHandler);
+        return MainRouter.bindToRouter(homeHandler, newsHandler, matchHandler);
     }
 
 }

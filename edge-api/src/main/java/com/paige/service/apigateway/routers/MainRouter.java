@@ -18,13 +18,10 @@ public class MainRouter {
 
     public static RouterFunction<?> bindToRouter(final HomeHandler homeHandler
                                                 , final NewsHandler newsHandler
-                                                , final MatchHandler matchHandler
-                                                , final RankingHandler rankingHandler) {
+                                                , final MatchHandler matchHandler) {
 
-        //ApiRouter.bindToHomeHandler(homeHandler);
-        return ApiRouter.bindToNewsHandler(newsHandler);
-        //ApiRouter.bindToMatchHandler(matchHandler);
-        //return ApiRouter.bindToRankingHandler(rankingHandler);
+        return ApiRouter
+                .bindToHandler(homeHandler, matchHandler, newsHandler);
     }
 
 
