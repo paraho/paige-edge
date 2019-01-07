@@ -47,6 +47,7 @@ subprojects {
 
 }
 
+/*
 project(':edge-api') {
     dependencies {
         compile project(':edge-common')
@@ -58,4 +59,4 @@ project(':edge-service') {
         compile project(':edge-common')
     }
 }
-
+*/
