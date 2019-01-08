@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class HomeService {
 
 
@@ -87,10 +87,10 @@ public class HomeService {
 
 
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
         //TODO : 설정정보로 빼기
         System.setProperty("SERVER.PORT","9000");
         SpringApplication.run(HomeService.class, args);
-    }
+    }*/
 }

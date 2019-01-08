@@ -9,8 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/edge-api" />
-            <option value="$PROJECT_DIR$/edge-common" />
-            <option value="$PROJECT_DIR$/edge-service" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

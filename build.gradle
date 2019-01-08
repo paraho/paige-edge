@@ -47,16 +47,3 @@ subprojects {
 
 }
 
-/*
-project(':edge-api') {
-    dependencies {
-        compile project(':edge-common')
-    }
-}
-
-project(':edge-service') {
-    dependencies {
-        compile project(':edge-common')
-    }
-}
-*/

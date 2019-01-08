@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class ApiServiceInfo implements Serializable {
+public class ApiServiceInfo {
 
     private String baseurl;
     private String path;

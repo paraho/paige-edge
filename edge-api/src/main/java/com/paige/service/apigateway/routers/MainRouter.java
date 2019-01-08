@@ -11,17 +11,12 @@ public class MainRouter {
                 .doRoute(handler);
     }
 
-    public static void initialize(final ApiServiceConfig apiServiceConfig, final ErrorHandler errorHandler) {
-        ApiRouter apiRouter = new ApiRouter(apiServiceConfig, errorHandler);
-    }
-
-
-    public static RouterFunction<?> bindToRouter(final HomeHandler homeHandler
-                                                , final NewsHandler newsHandler
-                                                , final MatchHandler matchHandler) {
+    public static RouterFunction<?> bindToHandler(final ApiServiceConfig apiServiceConfig
+            , final ServiceHandler serviceHandler
+            , final ErrorHandler errorHandler) {
 
         return ApiRouter
-                .bindToHandler(homeHandler, matchHandler, newsHandler);
+                .bindToHandlerEx(apiServiceConfig, serviceHandler, errorHandler);
     }
 
 
