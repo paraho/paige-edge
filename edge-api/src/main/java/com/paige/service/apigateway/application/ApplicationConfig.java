@@ -65,4 +65,6 @@ public class ApplicationConfig {
         return MainRouter.bindToRouter(homeHandler, newsHandler, matchHandler);
     }
 
+
+
 }
