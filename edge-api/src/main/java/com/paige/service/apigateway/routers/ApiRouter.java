@@ -61,17 +61,24 @@ public class ApiRouter {
                 .andRoute(DELETE("/api/delete/**").and(accept(APPLICATION_JSON)), rankingHandler::getContent);
     }
 
+    private static RouterFunction<?> bindToroute(MatchHandler matchHandler) {
+        return RouterFunctions
+                .route(GET("/api/**"), matchHandler::getContent)
+                .filter(new HandlerFilter());
+    }
+
     public static RouterFunction<?> bindToHandlerEx(ApiServiceConfig apiServiceConfig, ServiceHandler serviceHandler
             , ErrorHandler errorHandler) {
 
         return RouterFunctions
                 .route(GET(API_PATH + apiServiceConfig.getNews().getPath())
                         .and(accept(APPLICATION_JSON)), serviceHandler.getNewsHandler()::getContent)
-                .filter(new HandlerFilter())
+                .andOther(bindToroute(serviceHandler.getMatchHandler()))
                 .andOther(bindToMatchHandler(apiServiceConfig, serviceHandler.getMatchHandler()))
                 .andOther(bindToHomeHandler(apiServiceConfig, serviceHandler.getHomeHandler()))
                 .andOther(bindToMatchHandler(apiServiceConfig, serviceHandler.getMatchHandler()))
-                .andOther(route(RequestPredicates.all(), errorHandler::notFound));
+                .andOther(route(RequestPredicates.all(), errorHandler::notFound))
+                ;
     }
 
 }

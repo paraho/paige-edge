@@ -16,8 +16,6 @@ public class ApiApplication implements CommandLineRunner {
 
     public static void main(String[] args){
 
-        //TODO : 설정정보로 빼기
-        System.setProperty("SERVER.PORT","8082");
         SpringApplication.run(ApiApplication.class, args);
     }
 

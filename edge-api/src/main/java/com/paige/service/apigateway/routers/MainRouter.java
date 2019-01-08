@@ -19,6 +19,4 @@ public class MainRouter {
                 .bindToHandlerEx(apiServiceConfig, serviceHandler, errorHandler);
     }
 
-
-
 }

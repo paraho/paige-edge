@@ -1,6 +1,7 @@
 package com.paige.service.apigateway.Filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.HandlerFilterFunction;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -8,6 +9,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Slf4j
+@Component
 public class HandlerFilter implements HandlerFilterFunction<ServerResponse, ServerResponse> {
 
     @Override
